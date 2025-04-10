@@ -6,10 +6,16 @@ import {
 } from "@apollo/client-integration-nextjs";
 
 export const { getClient } = registerApolloClient(() => {
+  const uri = process.env.NEXT_PUBLIC_GRAPHQL_URL;
+
+  if (!uri) {
+    throw new Error("NEXT_PUBLIC_GRAPHQL_URL is not defined");
+  }
+
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: "http://localhost:8080/graphql",
+      uri,
       fetchOptions: { cache: "no-store" },
     }),
   });
