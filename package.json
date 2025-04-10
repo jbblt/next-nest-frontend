@@ -11,14 +11,17 @@
     "generate": "GITHUB_TOKEN='NEED TO MANAGE TOKEN HERE' graphql-codegen -d -- --watch"
   },
   "dependencies": {
+    "@apollo/client": "^3.13.6",
+    "@apollo/experimental-nextjs-app-support": "^0.12.1",
     "@graphql-codegen/near-operation-file-preset": "^3.0.0",
     "@next/env": "^15.2.1",
     "@prisma/client": "^6.5.0",
     "@reduxjs/toolkit": "^2.6.0",
     "@types/eslint-config-prettier": "^6.11.3",
+    "apollo": "^2.34.0",
     "graphql": "^16.10.0",
     "js-cookie": "^3.0.5",
-    "next": "15.1.7",
+    "next": "15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",

@@ -5,10 +5,7 @@ const nextConfig: NextConfig = {
     styledComponents: true,
   },
   experimental: {
-    turbo: {
-      minify: true,
-      treeShaking: true,
-    }
+
   },
   webpack: (config, { isServer }) => {    if (!isServer) {
       config.externals.push('fs', 'path', 'os');
