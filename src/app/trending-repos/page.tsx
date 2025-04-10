@@ -1,5 +1,5 @@
 // import { getTrendingRepos } from "@/graphql/trendingRepos";
-import { RSCGithubTrendingRepos } from "@/components/rsc/RSCGithubTrendingRepos";
+// import { RSCGithubTrendingRepos } from "@/components/rsc/RSCGithubTrendingRepos";
 
 export default async function Page() {
   // const { data } = await getClient().query({

@@ -9,7 +9,7 @@ export const { getClient } = registerApolloClient(() => {
   const uri = process.env.NEXT_PUBLIC_GRAPHQL_URL;
 
   if (!uri) {
-    throw new Error("NEXT_PUBLIC_GRAPHQL_URL is not defined");
+    console.error("NEXT_PUBLIC_GRAPHQL_URL is not defined");
   }
 
   return new ApolloClient({
