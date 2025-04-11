@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { ReactNode, Suspense } from "react";
-import { Spinner } from "@/components/ui/Spinner";
+import { Spinner } from "@/components/csr/Spinner";
 
 export const LayoutContainer = styled.div`
   display: flex;

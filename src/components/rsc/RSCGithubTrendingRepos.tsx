@@ -8,6 +8,7 @@ export const RSCGithubTrendingRepos = ({ trendRepos }: { trendRepos: any }) => {
     any | undefined
   >;
   return (
+    // TODO Wrap all this into a CSR component because like this  ( use client ) it's not a RSC anymore. need to not have styled-component inside or to change styled-component by css.module
     <div>
       <h3>Github Trending Repositories</h3>
 

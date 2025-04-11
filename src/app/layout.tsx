@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 import StyledComponentsRegistry from "@/lib/registry";
 import ClientLayout from "@/styled/clientLayout";
 import Layout from "@/styled/sharedStyles";
-import StoreProvider from "@/redux/StoreAppProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,13 +17,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StoreProvider>
-          <StyledComponentsRegistry>
-            <ClientLayout>
-              <Layout>{children}</Layout>
-            </ClientLayout>
-          </StyledComponentsRegistry>
-        </StoreProvider>
+        <StyledComponentsRegistry>
+          <ClientLayout>
+            <Layout>{children}</Layout>
+          </ClientLayout>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
