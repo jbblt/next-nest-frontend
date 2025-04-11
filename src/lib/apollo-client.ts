@@ -1,22 +1,29 @@
-import { HttpLink } from "@apollo/client";
 import {
-  registerApolloClient,
   ApolloClient,
   InMemoryCache,
-} from "@apollo/client-integration-nextjs";
+  HttpLink,
+  ApolloLink,
+  NormalizedCacheObject,
+} from "@apollo/client";
+import { registerApolloClient } from "@apollo/client-integration-nextjs";
 
-export const { getClient } = registerApolloClient(() => {
-  const uri = process.env.NEXT_PUBLIC_GRAPHQL_URL;
+const isServer = typeof window === "undefined";
 
-  if (!uri) {
-    console.error("NEXT_PUBLIC_GRAPHQL_URL is not defined");
-  }
-
-  return new ApolloClient({
-    cache: new InMemoryCache(),
-    link: new HttpLink({
-      uri,
-      fetchOptions: { cache: "no-store" },
-    }),
-  });
+const httpLink = new HttpLink({
+  uri: process.env.NEXT_PUBLIC_GRAPHQL_URL,
+  fetchOptions: { cache: "no-store" },
+  headers: isServer
+    ? {
+        Authorization: `Bearer ${process.env.GRAPHQL_AUTH_TOKEN}`,
+      }
+    : {},
 });
+
+export const { getClient } = registerApolloClient(
+  (): ApolloClient<NormalizedCacheObject> => {
+    return new ApolloClient({
+      link: ApolloLink.from([httpLink]),
+      cache: new InMemoryCache(),
+    });
+  },
+);
