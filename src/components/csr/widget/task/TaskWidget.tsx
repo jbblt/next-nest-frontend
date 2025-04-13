@@ -1,8 +1,8 @@
 import { getClient } from "@/lib/apollo-client";
 import { GET_TASKS } from "@/graphql/task/task";
-import { TaskPageWrapper } from "@/components/csr/task/TaskPageWrapper";
+import { TaskPageWrapper } from "@/components/csr/widget/task/TaskPageWrapper";
 
-export const TaskPage = async () => {
+export const TaskWidget = async () => {
   try {
     const client = getClient();
     const { data } = await client.query({

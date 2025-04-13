@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { glowPulsation } from "@/components/csr/animations/glowPulsation";
 
 const Button = styled.button`
   background: ${({ theme }) => theme.colors.primary};
@@ -12,11 +13,12 @@ const Button = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   transition: all 0.3s ease-in-out;
-  box-shadow: ${({ theme }) => theme.effects.glowPrimary};
+  ${({ theme }) =>
+    glowPulsation(theme, { mode: "default", type: "primary", synced: true })}
 
   &:hover {
-    box-shadow: ${({ theme }) => theme.effects.glowHover};
-    transform: scale(1.05);
+    ${({ theme }) =>
+      glowPulsation(theme, { mode: "hover", type: "primary", synced: true })}
   }
 `;
 
