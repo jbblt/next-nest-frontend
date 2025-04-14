@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 export const WidgetWrapper = styled.div<{ size?: "XL" | "MD" | "SM" }>`
-  padding: 2rem;
+  padding: 0.8rem;
   flex: 0 0
     ${({ size }) =>
       size === "XL"

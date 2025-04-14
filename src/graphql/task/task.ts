@@ -1,22 +1,29 @@
-import gql from "graphql-tag";
-
-export const GET_TASKS = gql`
+export const GET_TASKS = `
   query GetTasks {
     tasks {
       id
       title
       status
+      description
     }
   }
 `;
 
-export const CREATE_TASK = gql`
-  mutation CreateTask($title: String!, $description: String, $status: String) {
+export const CREATE_TASK = `
+  mutation CreateTask($title: String!, $description: String, $status: String!) {
     createTask(title: $title, description: $description, status: $status) {
       id
       title
       description
       createdAt
+    }
+  }
+`;
+
+export const DELETE_TASK = `
+  mutation DeleteTask($id: Int!) {
+    deleteTask(id: $id) {
+      id
     }
   }
 `;
