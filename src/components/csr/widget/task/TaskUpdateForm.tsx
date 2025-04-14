@@ -68,6 +68,12 @@ export default function TaskUpdateForm({ task }: TaskUpdateProps) {
         {...register("title", { required: true })}
       />
       <TextArea placeholder="Task description" {...register("description")} />
+      <select {...register("status", { required: true })}>
+        <option value="">Select status</option>
+        <option value="TODO">📝 To Do</option>
+        <option value="IN_PROGRESS">🚧 In Progress</option>
+        <option value="DONE">✅ Done</option>
+      </select>
       <Button type="submit">Update Task</Button>
     </Form>
   );

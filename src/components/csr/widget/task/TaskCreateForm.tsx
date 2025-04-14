@@ -1,15 +1,28 @@
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import { Task } from "@/types/Task";
+import { createTask } from "@/app/actions/task/task";
 
 const Form = styled.form`
   background-color: ${({ theme }) => theme.backgroundColors.card};
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: ${({ theme }) => theme.effects.glowSecondary};
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Input = styled.input`
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.light};
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+`;
+
+const Select = styled.select`
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.light};
@@ -43,20 +56,20 @@ const Button = styled.button`
   }
 `;
 
-type TaskUpdateProps = {
-  task: Task;
-};
+export default function TaskCreateForm() {
+  const { register, handleSubmit, reset } = useForm<{
+    title: string;
+    description: string;
+    status: "TODO" | "IN_PROGRESS" | "DONE";
+  }>();
 
-export default function TaskUpdateForm({ task }: TaskUpdateProps) {
-  const { register, handleSubmit } = useForm<Task>({
-    defaultValues: task,
-  });
-
-  // const dispatch = useDispatch();
-
-  const onSubmit = (data: Task) => {
-    // dispatch(updateTask(data));
-    console.log("Update Task !!", data);
+  const onSubmit = async (formData: {
+    title: string;
+    description: string;
+    status: "TODO" | "IN_PROGRESS" | "DONE";
+  }) => {
+    await createTask(formData);
+    reset();
   };
 
   return (
@@ -66,7 +79,13 @@ export default function TaskUpdateForm({ task }: TaskUpdateProps) {
         {...register("title", { required: true })}
       />
       <TextArea placeholder="Task description" {...register("description")} />
-      <Button type="submit">Update Task</Button>
+      <Select {...register("status")}>
+        <option value="">Select status</option>
+        <option value="TODO">📝 To Do</option>
+        <option value="IN_PROGRESS">🚧 In Progress</option>
+        <option value="DONE">✅ Done</option>
+      </Select>
+      <Button type="submit">Add Task</Button>
     </Form>
   );
 }

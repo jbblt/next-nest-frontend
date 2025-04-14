@@ -46,8 +46,9 @@ export const Main = styled.main`
   padding: 2rem;
   align-content: center;
   justify-content: center;
-  max-width: 1200px;
-  margin: 0;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
   height: 100%;
 `;
 export const Footer = styled.footer`

@@ -1,20 +1,22 @@
 "use client";
 
-import { TaskResponse } from "@/types/Task";
-import {
-  TaskListInner,
-  TaskListWrapper,
-} from "@/components/csr/widget/task/TaskListWrapper";
-import { TaskCard } from "@/components/csr/widget/task/TaskCard";
+import { Task } from "@/types/Task";
+import TaskCreateForm from "@/components/csr/widget/task/TaskCreateForm";
+import { TaskSlider } from "@/components/csr/widget/task/TaskSlider";
+import styled from "styled-components";
 
-export const TaskPageWrapper = ({ tasks }: { tasks: TaskResponse[] }) => {
+export const TaskPageWrapper = ({ tasks }: { tasks: Task[] }) => {
   return (
-    <TaskListWrapper>
-      <TaskListInner>
-        {tasks.map((task) => (
-          <TaskCard task={task} />
-        ))}
-      </TaskListInner>
-    </TaskListWrapper>
+    <Wrapper>
+      <TaskSlider tasks={tasks} />
+      <TaskCreateForm />
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+`;
