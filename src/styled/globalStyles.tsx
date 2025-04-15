@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         font-family: ${poppins.style.fontFamily};
+        overflow-x: hidden;
     }
 
     h1, h2, h3, h4 {

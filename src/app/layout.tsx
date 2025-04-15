@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import StyledComponentsRegistry from "@/lib/registry";
 import ClientLayout from "@/styled/clientLayout";
 import Layout from "@/styled/sharedStyles";
+import { AuthProvider } from "@/lib/SessionProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,11 +18,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StyledComponentsRegistry>
-          <ClientLayout>
-            <Layout>{children}</Layout>
-          </ClientLayout>
-        </StyledComponentsRegistry>
+        <AuthProvider>
+          <StyledComponentsRegistry>
+            <ClientLayout>
+              <Layout>{children}</Layout>
+            </ClientLayout>
+          </StyledComponentsRegistry>
+        </AuthProvider>
       </body>
     </html>
   );

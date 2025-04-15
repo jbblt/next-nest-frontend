@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ReactNode, Suspense } from "react";
 import { Spinner } from "@/components/csr/Spinner";
 import { glowPulsation } from "@/components/csr/animations/glowPulsation";
+import { UserMenu } from "@/components/csr/UserMenu";
 
 export const LayoutContainer = styled.div`
   display: flex;
@@ -20,11 +21,17 @@ export const Header = styled.header`
   height: 3rem;
   padding: 1rem 2rem;
   ${({ theme }) =>
-    glowPulsation(theme, { type: "primary", mode: "default", synced: true })}
+    glowPulsation(theme, {
+      type: "primary",
+      mode: "default",
+      synced: false,
+      direction: "bottom",
+    })}
 
   ul {
     display: flex;
     list-style: none;
+    align-items: center;
     gap: 1rem;
     padding: 0;
     margin: 0;
@@ -59,7 +66,12 @@ export const Footer = styled.footer`
   padding: 0.5rem 0.5rem;
   background-color: ${({ theme }) => theme.backgroundColors.secondary};
   ${({ theme }) =>
-    glowPulsation(theme, { type: "primary", mode: "default", synced: true })}
+    glowPulsation(theme, {
+      type: "primary",
+      mode: "default",
+      synced: false,
+      direction: "top",
+    })}
   color: ${({ theme }) => theme.colors.light};
   &:hover {
     color: ${({ theme }) => theme.colors.secondary};
@@ -74,6 +86,9 @@ export default function Layout({ children }: { children: ReactNode }) {
         <ul>
           <li>
             <Link href="/trending-repos">Trending Repos</Link>
+          </li>
+          <li>
+            <UserMenu />
           </li>
         </ul>
       </Header>
