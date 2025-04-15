@@ -8,7 +8,8 @@ export async function GET(request: Request) {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.email) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    const fallbackOrigin = process.env.NEXTAUTH_URL || "http://localhost:3000";
+    return NextResponse.redirect(new URL("/login", fallbackOrigin));
   }
 
   const result = await fetch(`${process.env.GRAPHQL_URL}`, {

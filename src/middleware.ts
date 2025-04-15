@@ -19,7 +19,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  return NextResponse.redirect(new URL("/login", request.url));
+  const fallbackOrigin = process.env.NEXTAUTH_URL || "http://localhost:3000";
+  const redirectUrl = new URL("/login", fallbackOrigin);
+  return NextResponse.redirect(redirectUrl);
 }
 export const config = {
   matcher: ["/((?!api|_next|assets|favicon.ico).*)"],
