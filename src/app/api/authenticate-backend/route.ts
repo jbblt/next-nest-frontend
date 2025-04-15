@@ -40,7 +40,12 @@ export async function GET(request: Request) {
     path: "/",
     maxAge: 60 * 60 * 24 * 7,
   });
+  let origin = process.env.NEXTAUTH_URL || "http://localhost:3000";
+  try {
+    origin = new URL(request.url).origin;
+  } catch (err) {
+    console.warn("Fallback to default origin:", err);
+  }
 
-  const origin = new URL(request.url).origin;
   return NextResponse.redirect(`${origin}/`);
 }
