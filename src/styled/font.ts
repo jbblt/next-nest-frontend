@@ -1,7 +1,6 @@
-import { Poppins, Merriweather } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-export const poppins = Poppins({ weight: ["400", "700"], subsets: ["latin"] });
-export const merriweather = Merriweather({
-  weight: ["400", "700"],
+export const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
+  weight: ["400", "700"],
 });

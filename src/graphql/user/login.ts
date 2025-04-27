@@ -3,3 +3,9 @@ export const LOGIN_USER = `
     loginUser(email: $email)
   }
 `;
+
+export const LOGIN_USER_WITH_PASSWORD = `
+  mutation LoginUserWithPassword($email: String!, $password: String!) {
+    loginUserWithPassword(email: $email, password: $password)
+  }
+`;
