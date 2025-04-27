@@ -1,10 +1,10 @@
 export const baseColors = {
-  primary: "#FF007A",
-  secondary: "#00FF9F",
-  highlight: "#FF44CC",
-  light: "#E0E0E0",
-  lighter: "#ffffff",
-  dark: "#121212",
-  darker: "#0A0F0D",
-  accent: "#3EF8B0",
+  primary: "#38BDF8",
+  secondary: "#1F2937",
+  highlight: "#93C5FD",
+  light: "#D1D5DB",
+  lighter: "#FFFFFF",
+  dark: "#111827",
+  darker: "#0F172A",
+  accent: "#38BDF8",
 };

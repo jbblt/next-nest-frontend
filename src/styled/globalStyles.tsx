@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { poppins, merriweather } from "./font";
+import { jakarta } from "./font";
 
 const GlobalStyle = createGlobalStyle`
     html,
@@ -8,12 +8,8 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${({ theme }) => theme.backgroundColors.primary};
         padding: 0;
         margin: 0;
-        font-family: ${poppins.style.fontFamily};
+        font-family: ${jakarta.style.fontFamily};
         overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4 {
-        font-family: ${merriweather.style.fontFamily};
     }
 
     a {

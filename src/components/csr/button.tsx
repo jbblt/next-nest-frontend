@@ -13,8 +13,6 @@ const Button = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   transition: all 0.3s ease-in-out;
-  ${({ theme }) =>
-    glowPulsation(theme, { mode: "default", type: "primary", synced: true })}
 
   &:hover {
     ${({ theme }) =>

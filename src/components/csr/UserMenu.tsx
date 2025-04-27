@@ -98,20 +98,20 @@ export const UserMenu = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  if (!session?.user?.image) return null;
+  if (!session) return null;
 
   return (
     <div ref={menuRef} style={{ position: "relative" }}>
       <Avatar
         $isOpen={isOpen}
-        src={session.user.image}
+        src={session.user?.image ?? "Todo use Default image"}
         alt="User avatar"
         onClick={toggleMenu}
         referrerPolicy="no-referrer"
       />
       {isOpen && (
         <Dropdown>
-          <Email>{session.user.email}</Email>
+          <Email>{session.user?.email}</Email>
           <MenuItem href="/account">Mon compte</MenuItem>
           <MenuItem href="/tasks">Mes tâches</MenuItem>
           <LogoutButton onClick={() => signOut()}>Se déconnecter</LogoutButton>

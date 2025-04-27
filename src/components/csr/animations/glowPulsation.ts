@@ -6,7 +6,7 @@ const pulseGlow = keyframes`
     opacity: 0.6;
   }
   50% {
-    transform: scale(1.03);
+    transform: scale(1.01);
     opacity: 1;
   }
   100% {
