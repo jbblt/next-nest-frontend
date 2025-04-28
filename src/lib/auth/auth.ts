@@ -1,12 +1,11 @@
-import { cookies } from "next/headers";
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { fetchBackendLoginUser } from "@/lib/auth/fetchBackendLoginUser";
 
 export async function auth() {
-  const cookieStore = await cookies();
-  return cookieStore.get("auth_token")?.value;
+  const session = await getServerSession(authOptions);
+  return session?.accessToken || null;
 }
 
 export const authOptions: NextAuthOptions = {
