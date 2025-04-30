@@ -12,6 +12,18 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+  headers: async () => [
+    {
+      source: "/(.*)",
+      headers: [
+        {
+          key: "Content-Security-Policy",
+          value:
+            "default-src 'self'; script-src 'self' 'unsafe-inline' https://accounts.google.com; style-src 'self' 'unsafe-inline'; frame-src https://accounts.google.com; connect-src 'self' https://next-nest-portfolio-backend.onrender.com",
+        },
+      ],
+    },
+  ],
 };
 
 export default nextConfig;
