@@ -1,4 +1,4 @@
-import { NextAuthOptions, getServerSession } from "next-auth";
+import { NextAuthOptions, getServerSession, User } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { fetchBackendLoginUser } from "@/lib/auth/fetchBackendLoginUser";
@@ -35,14 +35,14 @@ export const authOptions: NextAuthOptions = {
 
         if (!res.ok) throw new Error("Invalid credentials");
 
-        const data = await res.json();
+        const { user, token } = (await res.json()) as unknown as {
+          token: string;
+          user: User;
+        };
 
         return {
-          id: data.userId,
-          email: data.email,
-          accessToken: data.backendJWT,
-          name: data.name,
-          image: data.image,
+          ...user,
+          accessToken: token,
         };
       },
     }),

@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import styled from "styled-components";
 import Button from "@/components/csr/button";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const LoginContainer = styled.div`
   height: 100dvh;
@@ -23,7 +24,7 @@ const LoginBox = styled.div`
   flex-direction: column;
   gap: 2rem;
   width: 320px;
-  span {
+  #divider {
     border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
   }
   div {
@@ -46,6 +47,8 @@ const Input = styled.input`
 const ErrorText = styled.span`
   color: red;
   font-size: 0.85rem;
+  width: 100%;
+  text-align: center;
 `;
 
 export default function LoginPage() {
@@ -54,13 +57,20 @@ export default function LoginPage() {
     handleSubmit,
     formState: { errors },
   } = useForm<{ email: string; password: string }>();
+  const [authError, setAuthError] = useState<string | null>(null);
 
   const handleLogin = async (data: { email: string; password: string }) => {
-    await signIn("credentials", {
+    const loginResult = await signIn("credentials", {
       email: data.email,
       password: data.password,
       callbackUrl: "/",
+      redirect: false,
     });
+    if (loginResult?.error) {
+      setAuthError("Identifiants incorrects");
+    } else {
+      window.location.href = loginResult?.url || "/";
+    }
   };
 
   return (
@@ -101,6 +111,7 @@ export default function LoginPage() {
           {errors.password && <ErrorText>{errors.password?.message}</ErrorText>}
 
           <Button type="submit">Se connecter</Button>
+          {authError && <ErrorText>{authError}</ErrorText>}
         </form>
         <span id={"divider"} />
         <div>

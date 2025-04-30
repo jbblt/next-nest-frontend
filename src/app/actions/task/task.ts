@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { fetchGraphQL } from "@/lib/graphQLClient";
+import { fetchGraphQL } from "@/lib/graphql/graphQLClient";
 import { CREATE_TASK, DELETE_TASK, GET_TASKS } from "@/graphql/task/task";
 import { TaskResponse } from "@/types/Task";
 
