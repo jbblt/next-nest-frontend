@@ -3,7 +3,11 @@ export class GraphQLRequestError extends Error {
   public originalError?: any;
 
   constructor(message: string, status?: number, originalError?: any) {
-    super(message);
+    const finalMessage =
+      status === 503
+        ? "⏳ This portfolio uses free-tier hosting. Please retry in a few seconds... or fund the project with your CB 😄"
+        : message;
+    super(finalMessage);
     this.name = "GraphQLRequestError";
     this.status = status;
     this.originalError = originalError;
