@@ -7,7 +7,6 @@ export const TaskCardWrapper = styled.div`
   padding: 1.2rem;
   box-shadow: ${({ theme }) => theme.effects.glowPrimary};
   transition: all 0.3s ease;
-  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -49,8 +48,7 @@ export const TaskDescription = styled.p`
 export const TaskFooter = styled.div`
   margin-top: 0.8rem;
   font-size: 0.8rem;
-  opacity: 0.7;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const DeleteButton = styled.button`

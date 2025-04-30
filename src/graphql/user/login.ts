@@ -6,6 +6,14 @@ export const LOGIN_USER = `
 
 export const LOGIN_USER_WITH_PASSWORD = `
   mutation LoginUserWithPassword($email: String!, $password: String!) {
-    loginUserWithPassword(email: $email, password: $password)
+loginUserWithPassword(email: $email, password: $password){
+      token
+      user {
+        id
+        name
+        email
+        image
+      }
+    }
   }
 `;

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { fetchGraphQL } from "@/lib/graphQLClient";
+import { fetchGraphQL } from "@/lib/graphql/graphQLClient";
 import { LOGIN_USER_WITH_PASSWORD } from "@/graphql/user/login";
 
 export async function POST(req: Request) {
@@ -11,12 +11,12 @@ export async function POST(req: Request) {
     );
   }
 
-  const data = await fetchGraphQL<{ loginUserWithPassword: string }>(
-    LOGIN_USER_WITH_PASSWORD,
-    {
-      email,
-      password,
-    },
-  );
+  const data = await fetchGraphQL<{
+    loginUserWithPassword: { user: any; token: string };
+  }>(LOGIN_USER_WITH_PASSWORD, {
+    email,
+    password,
+  });
+
   return NextResponse.json(data.loginUserWithPassword);
 }

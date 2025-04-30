@@ -42,7 +42,7 @@ const Dropdown = styled.div`
   border-radius: 1rem;
   box-shadow: ${({ theme }) => theme.effects.glowPrimary};
   padding: 1rem;
-  z-index: 1000;
+  z-index: 100;
   min-width: 220px;
   animation: ${fadeIn} 0.3s ease;
 `;
@@ -101,7 +101,7 @@ export const UserMenu = () => {
   if (!session) return null;
 
   return (
-    <div ref={menuRef} style={{ position: "relative" }}>
+    <div ref={menuRef} style={{ position: "relative", zIndex: 1000 }}>
       <Avatar
         $isOpen={isOpen}
         src={session.user?.image ?? "Todo use Default image"}
